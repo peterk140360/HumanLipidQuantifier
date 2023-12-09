@@ -1,0 +1,62 @@
+<metabolite>
+  <version>5.0</version>
+  <creation_date>2021-08-30 20:00:47 UTC</creation_date>
+  <update_date>2021-09-16 22:31:44 UTC</update_date>
+  <accession>HMDB0242419</accession>
+  <status>predicted</status>
+  <secondary_accessions>
+  </secondary_accessions>
+  <name>Deoxycholylleucine</name>
+  <description>Deoxycholylleucine belongs to a class of molecules known as bile acid-amino acid conjugates. These are bile acid conjugates that consist of a primary bile acid such as cholic acid, doxycholic acid and chenodeoxycholic acid, conjugated to an amino acid. Deoxycholylleucine consists of the bile acid deoxycholic acid conjugated to the amino acid Leucine conjugated at the C24 acyl site.Bile acids play an important role in regulating various physiological systems, such as fat digestion, cholesterol metabolism, vitamin absorption, liver function, and enterohepatic circulation through their combined signaling, detergent, and antimicrobial mechanisms (PMID: 34127070). Bile acids also act as detergents in the gut and support the absorption of fats through the intestinal membrane. These same properties allow for the disruption of bacterial membranes, thereby allowing them to serve a bacteriocidal or bacteriostatic function. In humans (and other mammals) bile acids are normally conjugated with the amino acids glycine and taurine by the liver. This conjugation catalyzed by two liver enzymes, bile acid CoA ligase (BAL) and bile acid CoA: amino acid N-acyltransferase (BAT). Glycine and taurine bound BAs are also referred to as bile salts due to their decreased pKa and complete ionization resulting in these compounds being present as anions in vivo. Unlike glycine and taurine-conjugated bile acids, these recently discovered bile acids, such as Deoxycholylleucine, are produced by the gut microbiota, making them secondary bile acids (PMID: 32103176) or microbially conjugated bile acids (MCBAs) (PMID: 34127070). Evidence suggests that these bile acid-amino acid conjugates are produced by microbes belonging to Clostridia species (PMID: 32103176). These unusual bile acid-amino acid conjugates are found in higher frequency in patients with inflammatory bowel disease (IBD), cystic fibrosis (CF) and in infants (PMID: 32103176). Deoxycholylleucine appears to act as an agonist for the farnesoid X receptor (FXR) and it can also lead to reduced expression of bile acid synthesis genes (PMID: 32103176). It currently appears that microbially conjugated bile acids (MCBAs) or amino acid-bile acid conjugates are only conjugated to cholic acid, deoxycholic acid and chenodeoxycholic acid (PMID: 34127070). It has been estimated that if microbial conjugation of bile acids is very promiscuous and occurs for all potential oxidized, epimerized, and dehydroxylated states of each hydroxyl group present on cholic acid (C3, C7, C12) in addition to ring orientation, the total number of potential human bile acid conjugates could be over 2800 (PMID: 34127070).</description>
+  <synonyms>
+  </synonyms>
+  <chemical_formula/>
+  <average_molecular_weight/>
+  <monisotopic_molecular_weight/>
+  <iupac_name/>
+  <traditional_iupac/>
+  <cas_registry_number/>
+  <smiles/>
+  <inchi/>
+  <inchikey/>
+  <taxonomy>
+  </taxonomy>
+  <ontology>
+  </ontology>
+  <state/>
+  <experimental_properties>
+  </experimental_properties>
+  <predicted_properties>
+  </predicted_properties>
+  <spectra>
+  </spectra>
+  <biological_properties>
+    <cellular_locations>
+    </cellular_locations>
+    <biospecimen_locations>
+    </biospecimen_locations>
+    <tissue_locations>
+    </tissue_locations>
+    <pathways>
+    </pathways>
+  </biological_properties>
+  <normal_concentrations>
+  </normal_concentrations>
+  <abnormal_concentrations>
+  </abnormal_concentrations>
+  <diseases>
+  </diseases>
+  <synthesis_reference/>
+  <general_references>
+    <reference>
+      <reference_text>Guzior DV, Quinn RA: Review: microbial transformations of human bile acids. Microbiome. 2021 Jun 14;9(1):140. doi: 10.1186/s40168-021-01101-1.</reference_text>
+      <pubmed_id>34127070</pubmed_id>
+    </reference>
+    <reference>
+      <reference_text>Quinn RA, Melnik AV, Vrbanac A, Fu T, Patras KA, Christy MP, Bodai Z, Belda-Ferre P, Tripathi A, Chung LK, Downes M, Welch RD, Quinn M, Humphrey G, Panitchpakdi M, Weldon KC, Aksenov A, da Silva R, Avila-Pacheco J, Clish C, Bae S, Mallick H, Franzosa EA, Lloyd-Price J, Bussell R, Thron T, Nelson AT, Wang M, Leszczynski E, Vargas F, Gauglitz JM, Meehan MJ, Gentry E, Arthur TD, Komor AC, Poulsen O, Boland BS, Chang JT, Sandborn WJ, Lim M, Garg N, Lumeng JC, Xavier RJ, Kazmierczak BI, Jain R, Egan M, Rhee KE, Ferguson D, Raffatellu M, Vlamakis H, Haddad GG, Siegel D, Huttenhower C, Mazmanian SK, Evans RM, Nizet V, Knight R, Dorrestein PC: Global chemical effects of the microbiome include new bile-acid conjugations. Nature. 2020 Mar;579(7797):123-129. doi: 10.1038/s41586-020-2047-9. Epub 2020 Feb 26.</reference_text>
+      <pubmed_id>32103176</pubmed_id>
+    </reference>
+  </general_references>
+  <protein_associations>
+  </protein_associations>
+</metabolite>
