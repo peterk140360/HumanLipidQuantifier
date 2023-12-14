@@ -3,7 +3,7 @@
 # Company:     -
 # File:        HumanLipidQuantifier.py
 # created:     06.12.2023 10:32
-# last edited: 09.12.2023
+# last edited: 14.12.2023
 #
 # Description: HumanLipidQuantifier is a specialized software designed for
 #              accurately quantifying lipids within human cells.
@@ -177,15 +177,16 @@ def plot_inchikey_cycles(lipids_data, metabolites_data, save_fig, with_logo):
     # Calculate the positions by using the formula for the distance d
     # and wolframalpha as seen in the formula.txt file
     pos_metabolite = (0, 0)
-    pos_lipid = (2.23718218257649, 0)
-    pos_common = (1.67411, 0)
+    pos_lipid = (0, 2.23718218257649)   # (2.23718, 0)
+    pos_common = (0, 1.67411)           # (1.67411, 0)
 
     # Plotting
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(7, 8))          # (10, 7)
 
     # Draw the first circle representing metabolite InChiKeys
     plt.gca().add_patch(plt.Circle(pos_metabolite, radius_metabolite,
-                                   color='#D17E1A', alpha=0.6))
+                                   color='#D17E1A', alpha=0.6,
+                                   label='HMDB Dataset'))
     plt.text(*pos_metabolite,
              f'Metabolites\n'
              f'{total_metabolite_inchikeys:,.0f}'.replace(",", " "),
@@ -194,7 +195,8 @@ def plot_inchikey_cycles(lipids_data, metabolites_data, save_fig, with_logo):
 
     # Draw the second circle representing lipid InChiKeys
     plt.gca().add_patch(plt.Circle(pos_lipid, radius_lipid,
-                                   color='#1F5CA8', alpha=0.5))
+                                   color='#1F5CA8', alpha=0.5,
+                                   label='LIPID MAPS Dataset'))
     plt.text(*pos_lipid,
              f'Lipids\n{total_lipid_inchikeys:,.0f}'.replace(",", " "),
              ha='center', va='center', color='white', size=radius_lipid*15)
@@ -202,7 +204,7 @@ def plot_inchikey_cycles(lipids_data, metabolites_data, save_fig, with_logo):
     # Draw the intersection representing common InChiKeys
     # plt.gca().add_patch(plt.Circle(pos_common, radius_common,
     #                                color='red', alpha=0.5))
-    plt.text(*(pos_common[0] - 0.08, pos_common[1]),
+    plt.text(*(pos_common[0], pos_common[1] - 0.08),
              f'Common\n{total_common_inchikeys}',
              ha='center', va='center', color='white',  size=radius_common*25)
 
@@ -218,16 +220,17 @@ def plot_inchikey_cycles(lipids_data, metabolites_data, save_fig, with_logo):
             zorder=10, alpha=0.8)
         plt.imshow(logo_lm_img, extent=[
             pos_lipid[0] - 0.35, pos_lipid[0] + 0.35,
-            pos_lipid[1] - 0.75, pos_lipid[1] - 0.25])
+            pos_lipid[1] + 0.75, pos_lipid[1] + 0.25])  # change + to -
 
     # Set plot limits and show the plot
-    plt.xlim(-2, 3.3)
-    plt.ylim(-2, 2)
+    plt.xlim(-2, 2)         # (-2, 3.3)
+    plt.ylim(-2.5, 3.3)     # (-2, 2)
     plt.gca().set_aspect('equal', adjustable='box')
     plt.axis('on')  # This ensures the axis is turned on
     plt.tick_params(axis='both', which='both', length=0)  # Hide ticks
     plt.xticks([])  # Hide x-axis labels
     plt.yticks([])  # Hide y-axis labels
+    plt.legend(loc='lower center')
     # plt.grid(alpha=0.5)
     if (save_fig):
         figures_folder = 'figures'
@@ -236,9 +239,10 @@ def plot_inchikey_cycles(lipids_data, metabolites_data, save_fig, with_logo):
             plt.savefig(os.path.join(figures_folder,
                                      'intersection_plot_with_logo.png'),
                         format='png', dpi=500, bbox_inches='tight')
-        plt.savefig(os.path.join(figures_folder,
-                                 'intersection_plot_without_logo.png'),
-                    format='png', dpi=500, bbox_inches='tight')
+        else:
+            plt.savefig(os.path.join(figures_folder,
+                                     'intersection_plot_without_logo.png'),
+                        format='png', dpi=500, bbox_inches='tight')
     plt.show()
 
 
