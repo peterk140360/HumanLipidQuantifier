@@ -252,8 +252,8 @@ if __name__ == "__main__":
     with_logo = False
     save_txt = False
 
-    lipids_file_path = "data/lipids.json"
-    metabolites_file_path = "data/metabolites.json"
+    lipids_file_path = "data/test-json/lipids.json"
+    metabolites_file_path = "data/test-json/metabolites.json"
 
     # Load data from JSON files
     with open(lipids_file_path, 'r') as lipids_json:
@@ -276,8 +276,14 @@ if __name__ == "__main__":
                                                 save_txt)
 
     # Calulate percentage of common lipids relative to all metabolites
-    percent = round((100 * len(common_inchikeys) /
-                     total_metabolite_inchikeys), 2)
+    percent_inchikey = round((100 * len(common_inchikeys) /
+                              total_metabolite_inchikeys), 2)
+
+    percent_smiles = round((100 * len(common_simles) /
+                            total_metabolite_inchikeys), 2)
+
+    percent_formula = round((100 * len(common_formula) /
+                             total_metabolite_inchikeys), 2)
 
     # Print number of all InChiKeys of both datasets
     print("\n#################### NUMBER OF InChiKeys ####################")
@@ -291,7 +297,20 @@ if __name__ == "__main__":
     # Print the number of matching keys
     print(f"Number of matching InChiKeys: {len(common_inchikeys)}")
     # Print the percentage of common lipids reelative to all human metabolites.
-    print(f"Percentage of lipids relative to all metabolites: {percent} %")
+    print(f"Percentage of lipids relative to all metabolites: "
+          f"{percent_inchikey} %")
+
+    # Print the number of matching keys
+    print(f"\nNumber of matching SMILES: {len(common_simles)}")
+    # Print the percentage of common lipids reelative to all human metabolites.
+    print(f"Percentage of lipids relative to all metabolites: "
+          f"{percent_smiles} %")
+
+    # Print the number of matching keys
+    print(f"\nNumber of matching FORMULA: {len(common_formula)}")
+    # Print the percentage of common lipids reelative to all human metabolites.
+    print(f"Percentage of lipids relative to all metabolites: "
+          f"{percent_formula} %")
 
     # Generate and display the plot
     plot_inchikey_cycles(lipids_data, metabolites_data,
