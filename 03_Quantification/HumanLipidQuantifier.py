@@ -252,8 +252,8 @@ if __name__ == "__main__":
     with_logo = False
     save_txt = False
 
-    lipids_file_path = "data/test-json/lipids.json"
-    metabolites_file_path = "data/test-json/metabolites.json"
+    lipids_file_path = "data/lipids.json"
+    metabolites_file_path = "data/metabolites.json"
 
     # Load data from JSON files
     with open(lipids_file_path, 'r') as lipids_json:
