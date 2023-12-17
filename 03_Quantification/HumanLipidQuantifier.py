@@ -269,9 +269,11 @@ if __name__ == "__main__":
                                                'INCHI_KEY'))
 
     # Count matching keys
-    common_inchikeys, _, _ = count_matching_inchikeys(lipids_data,
-                                                      metabolites_data,
-                                                      save_txt)
+    (common_inchikeys,
+     common_simles,
+     common_formula) = count_matching_inchikeys(lipids_data,
+                                                metabolites_data,
+                                                save_txt)
 
     # Calulate percentage of common lipids relative to all metabolites
     percent = round((100 * len(common_inchikeys) /
