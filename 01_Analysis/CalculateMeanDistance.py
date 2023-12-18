@@ -79,28 +79,95 @@ def plot_distances(distances, save_fig):
     plt.show()
 
 
+def plot_boxplot(ax, data, title, xlabel, ylabel):
+    # Create a vertical boxplot with whisker caps and outliers
+    ax.boxplot(data, sym='k+', showcaps=True, showfliers=True)
+
+    # Set x-axis to logarithmic scale
+    ax.set_yscale('log')
+
+    # Add grid lines
+    ax.grid(True, linestyle='--', alpha=0.7)
+
+    # Add labels and title
+    ax.set_title(title)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+
+    # Customize box and whisker colors
+    box_colors = ['#1f77b4']
+    whisker_colors = ['#7570b3']
+    caps_colors = ['#7570b3']
+    median_colors = ['#b2df8a']
+
+    ax.boxplot(data, sym='k+', showcaps=True, showfliers=True,
+               boxprops=dict(color=box_colors[0]),
+               whiskerprops=dict(color=whisker_colors[0]),
+               capprops=dict(color=caps_colors[0]),
+               medianprops=dict(color=median_colors[0]))
+
+    # Remove ticks on the x-axis
+    ax.set_xticks([])
+
+
 if __name__ == "__main__":
-    file_path = "data/metabolite_217920_hits.txt"
+    save_fig = True
+    file_path_met = "data/metabolite_217920_hits.txt"
+    file_path_lip = "data/lipid_47751_hits.txt"
+
+    # Calculate distances for metabolite dataset
     (mean_distance, max_distance, min_distance,
      first_5_distances, min_distance_line,
-     max_distance_line, all_distances) = calculate_distances(file_path)
+     max_distance_line, all_distances) = calculate_distances(file_path_met)
 
+    # Calculate distances for lipid dataset
+    (mean_distance_lip, max_distance_lip, min_distance_lip,
+     first_5_distances_lip, min_distance_line_lip,
+     max_distance_line_lip, all_distances_lip) = calculate_distances(file_path_lip)
+
+    # Print statistics for metabolite dataset
+    print("Metabolite Dataset:")
     print(f"Mean distance is {mean_distance} Lines.")
     print(f"Max distance is {max_distance} Lines.")
     print(f"Min distance is {min_distance} Lines.")
-
     for i, distance in enumerate(first_5_distances, start=1):
         print(f"Distance between lines {i} and {i + 1} is {distance} Lines.")
-
     print(f"Line with the minimum distance: {min_distance_line}")
     print(f"Line with the maximum distance: {max_distance_line}")
+    print(f"Number of distances over 5000: {len([d for d in all_distances if d > 5000])}")
 
-    # Find distances over 5000
-    over_5000_distances = [distance for distance in all_distances
-                           if distance > 5000]
-    # Count the number of distances over 5000
-    count_over_5000 = len(over_5000_distances)
-    print(f"Number of distances over 5000: {count_over_5000}")
+    # Print statistics for lipid dataset
+    print("\nLipid Dataset:")
+    print(f"Mean distance is {mean_distance_lip} Lines.")
+    print(f"Max distance is {max_distance_lip} Lines.")
+    print(f"Min distance is {min_distance_lip} Lines.")
+    for i, distance in enumerate(first_5_distances_lip, start=1):
+        print(f"Distance between lines {i} and {i + 1} is {distance} Lines.")
+    print(f"Line with the minimum distance: {min_distance_line_lip}")
+    print(f"Line with the maximum distance: {max_distance_line_lip}")
+    print(f"Number of distances over 5000: {len([d for d in all_distances_lip if d > 5000])}")
 
-    # Plot distances
-    plot_distances(all_distances, save_fig=False)
+    # Create a subplot with 1 row and 2 columns (arranged horizontally)
+    fig, axes = plt.subplots(1, 2, figsize=(7, 9))
+
+    # Set a common title for the entire figure
+    # fig.suptitle('Length of Data Entries per Data Record', fontsize=11)
+    # fig.patch.set_edgecolor('black')  # Add a black frame around the entire plot
+    # fig.patch.set_linewidth(2)  # Set the linewidth of the frame
+
+    # Plot the first boxplot (metabolite)
+    plot_boxplot(axes[0], all_distances, '', 'HMDB', 'Length in Lines')
+
+    # Plot the second boxplot (lipid)
+    plot_boxplot(axes[1], all_distances_lip, '', 'LIPID MAPS', '')
+
+    # Adjust layout to prevent clipping of labels
+    plt.tight_layout()
+
+    if (save_fig):
+        figures_folder = 'figures'
+        os.makedirs(figures_folder, exist_ok=True)  # Create the folder
+        plt.savefig(os.path.join(figures_folder, 'boxplot_vertical.png'), format='png', dpi=500, bbox_inches='tight')
+
+    # Show the plot
+    plt.show()
