@@ -3,7 +3,7 @@
 # Company:     -
 # File:        HumanLipidQuantifier.py
 # created:     06.12.2023 10:32
-# last edited: 14.12.2023
+# last edited: 31.01.2024
 #
 # Description: HumanLipidQuantifier is a specialized software designed for
 #              accurately quantifying lipids within human cells.
@@ -268,6 +268,18 @@ if __name__ == "__main__":
     total_lipid_inchikeys = len(extract_values(lipids_data,
                                                'INCHI_KEY'))
 
+    # Count the sizes of each set
+    total_metabolite_smiles = len(extract_values(metabolites_data,
+                                                 'smiles'))
+    total_lipid_smiles = len(extract_values(lipids_data,
+                                            'SMILES'))
+
+    # Count the sizes of each set
+    total_metabolite_formula = len(extract_values(metabolites_data,
+                                                  'chemical_formula'))
+    total_lipid_formula = len(extract_values(lipids_data,
+                                             'FORMULA'))
+
     # Count matching keys
     (common_inchikeys,
      common_simles,
@@ -291,6 +303,18 @@ if __name__ == "__main__":
           f"{total_metabolite_inchikeys:,.0f}".replace(",", " "))
     print(f"\t... in lipid dataset: \t\t"
           f"{total_lipid_inchikeys:,.0f}".replace(",", " "))
+
+    print("\n##################### NUMBER OF SMILES ######################")
+    print(f"\t... in metabolite dataset: \t"
+          f"{total_metabolite_smiles:,.0f}".replace(",", " "))
+    print(f"\t... in lipid dataset: \t\t"
+          f"{total_lipid_smiles:,.0f}".replace(",", " "))
+
+    print("\n#################### NUMBER OF FORMULA ######################")
+    print(f"\t... in metabolite dataset: \t"
+          f"{total_metabolite_formula:,.0f}".replace(",", " "))
+    print(f"\t... in lipid dataset: \t\t"
+          f"{total_lipid_formula:,.0f}".replace(",", " "))
 
     # RESULTS
     print("\n########################## RESULTS ##########################")
